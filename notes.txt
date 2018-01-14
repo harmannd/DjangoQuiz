@@ -1,0 +1,35 @@
+Virtual Environment Setup
+   -sudo apt-get install -y python3-pip
+   -sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
+   -sudo apt-get install -y python3-venv
+   -pyvenv venv
+   -source venv/bin/activate
+   -sudo pip3 install -r requirements.txt
+
+Run server
+   -sudo python3 manage.py runserver 0:5000
+
+Commands
+    -sudo apt-get update
+    -sudo apt-get upgrade
+
+PostgreSQL
+    -install
+        -sudo apt-get install postgresql postgresql-contrib
+    -setup postgres user with password
+        -sudo -u postgres psql template1
+        -alter user postgres with encrypted password 'xxxxxxxx';
+        -sudo nano /etc/postgresql/9.5/main/pg_hba.conf
+            -local all postgres md5
+        -sudo /etc/init.d/postgresql restart
+    -setup quiz user
+        -create user quiz with password 'xxxxxxxx';
+        -\du
+        -q
+    -setup quiz db and db access
+        -create database quizdb with owner quiz;
+        -\c quizdb
+        -revoke all on schema public from public;
+        -grant all on schema public to quiz;
+    -migrate to postgresql
+        -python3 manage.py migrate
