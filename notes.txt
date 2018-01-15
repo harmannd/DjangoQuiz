@@ -1,17 +1,31 @@
-Virtual Environment Setup
-   -sudo apt-get install -y python3-pip
-   -sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
-   -sudo apt-get install -y python3-venv
-   -pyvenv venv
-   -source venv/bin/activate
-   -sudo pip3 install -r requirements.txt
+Tutorials
+    -https://docs.djangoproject.com/en/2.0/intro/tutorial01/
+    -https://www.wdtutorials.com/django/development/how-to-setup-a-development-environment-with-vagrant/#.Wlua5ainGUk
+    -https://www.digitalocean.com/community/tutorials/how-to-secure-postgresql-on-an-ubuntu-vps
+
+Update
+    -sudo apt-get update
+    -sudo apt-get upgrade
+
+Project setup
+    -django-admin startproject DjangoQuiz
+    -python3 manage.py startapp quiz
 
 Run server
    -sudo python3 manage.py runserver 0:5000
 
-Commands
-    -sudo apt-get update
-    -sudo apt-get upgrade
+Virtual Environment Setup
+    -install
+        -sudo apt-get install -y python3-pip
+        -sudo apt-get install build-essential libssl-dev libffi-dev python3-dev
+        -sudo apt-get install -y python3-venv
+        -pyvenv venv
+    -activate
+        -source venv/bin/activate
+
+Django
+    -install
+        -sudo pip3 install Django
 
 PostgreSQL
     -install
@@ -33,3 +47,20 @@ PostgreSQL
         -grant all on schema public to quiz;
     -migrate to postgresql
         -python3 manage.py migrate
+    -add models to quizdb
+        -python3 manage.py makemigrations quiz
+        -python3 manage.py migrate
+
+DjangoQuiz
+    -admin login
+        -admin
+        -password123
+        -admin@example.com
+    -views setup
+        -quiz/views
+            -set up logic
+        -quiz/urls
+            -set url path
+    -override Admin templates
+        -venv/lib/python3.5/site-packages/django/contrib/admin/templates/admin/base_site.html etc...
+
